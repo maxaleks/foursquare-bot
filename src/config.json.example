@@ -1,0 +1,22 @@
+{
+    "Server": {
+        "Host": "localhost",
+        "Port": "8000",
+        "SmoochWebhook": {
+            "path": "/api/message",
+            "baseUri": "",
+            "triggers": ["*"]
+        }
+    },
+    "Smooch": {
+        "keyId": "",
+        "secret": "",
+        "token": ""
+    },
+    "rollbar": {
+        "token": ""
+    },
+    "newrelic": {
+        "token": ""
+    }
+}

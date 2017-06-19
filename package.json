@@ -1,0 +1,51 @@
+{
+  "name": "workfusion-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "lint": "./node_modules/.bin/eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mabramchuk@git.workfusion.com/scm/~mabramchuk/workfusion-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://mabramchuk@git.workfusion.com/scm/~mabramchuk/workfusion-bot.git",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "chai": "^3.5.0",
+    "cors": "^2.8.3",
+    "cron": "^1.2.1",
+    "express": "^4.15.2",
+    "i18n": "^0.8.3",
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.1",
+    "newrelic": "^1.39.0",
+    "pg": "^6.1.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "rollbar": "^0.6.6",
+    "sequelize": "^3.30.2",
+    "sequelize-cli": "^2.7.0",
+    "smooch-core": "^4.0.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "git-revision": "0.0.2",
+    "git-user-name": "^1.2.0",
+    "shipit-cli": "^3.0.0",
+    "shipit-deploy": "^2.4.0",
+    "shipit-shared": "^4.4.2"
+  }
+}

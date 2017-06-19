@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Foursquare bot</title>
+    <script src="https://cdn.smooch.io/smooch.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+    .sk-logo {
+        display: none;
+    }
+    </style>
+    <script>
+        $.getJSON( '/config', function(data)  {
+            Smooch.init({ appToken: data.Smooch.token, });
+        })
+        .fail(function() {
+            console.log( "error get token" );
+        });
+    </script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
