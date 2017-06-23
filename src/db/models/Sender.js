@@ -10,6 +10,10 @@ class Sender extends BaseDBModel {
                 defaultValue: {},
             },
             username: Sequelize.TEXT,
+            coordinates: {
+                type: Sequelize.JSON,
+                defaultValue: {},
+            },
         };
     }
 
@@ -27,6 +31,10 @@ class Sender extends BaseDBModel {
 
     get username() {
         return this._rawModel.get('username');
+    }
+
+    get coordinates() {
+        return this._rawModel.get('coordinates');
     }
 }
 

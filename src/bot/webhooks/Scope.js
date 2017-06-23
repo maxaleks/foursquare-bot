@@ -31,6 +31,18 @@ class Scope {
         return null;
     }
 
+    get coordinates() {
+        if (this.update.messages) { return this.update.messages[0].coordinates; }
+
+        return null;
+    }
+
+    get type() {
+        if (this.update.messages) { return this.update.messages[0].type; }
+
+        return null;
+    }
+
     get postback() {
         if (this._update.postbacks) {
             return this._update.postbacks[0].payload;

@@ -29,7 +29,30 @@ class SmoochApi {
             });
     }
 
-    sendLocationRequest(userId, coordinates) {
+    sendLocationRequest(userId, text, locationText) {
+        return this.showTypingIndicator(userId)
+            .then(() => {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const params = {
+                            text,
+                            role: 'appMaker',
+                            type: 'text',
+                            actions: [
+                                {
+                                    type: 'locationRequest',
+                                    text: locationText,
+                                }
+                            ],
+                        };
+
+                        resolve(this._client.appUsers.sendMessage(userId, params));
+                    }, 0);
+                });
+            });
+    }
+
+    sendLocation(userId, coordinates) {
         return this._client.appUsers.sendMessage(userId, {
             role: 'appUser',
             type: 'location',

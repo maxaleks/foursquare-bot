@@ -132,6 +132,13 @@ class BotDatabase {
             { where: { id } }
         )
     }
+
+    saveLocation(id, coordinates) {
+        return this._models.Sender.update(
+            { coordinates: JSON.stringify(coordinates) },
+            { where: { id } }
+        )
+    }
 }
 
 module.exports = BotDatabase;
