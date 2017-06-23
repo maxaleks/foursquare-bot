@@ -1,7 +1,7 @@
 const Scope = require('./Scope');
 const SenderContext = require('../SenderContext');
 
-const VALID_TRIGGERS = ['message:appUser', 'postback'];
+const VALID_TRIGGERS = ['message:appUser', 'postback', 'conversation:start'];
 
 class WebhookUpdateProcessor {
     constructor(db, router, smooch, i18n) {
@@ -20,7 +20,7 @@ class WebhookUpdateProcessor {
 
                 const controller = item.controller;
                 const handler = item.handler;
-
+                console.log(controller);
                 return controller[handler](scope);
             });
         }

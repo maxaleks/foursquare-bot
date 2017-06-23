@@ -8,7 +8,8 @@ class Sender extends BaseDBModel {
             chatState: {
                 type: Sequelize.JSON,
                 defaultValue: {},
-            }
+            },
+            username: Sequelize.TEXT,
         };
     }
 
@@ -22,6 +23,10 @@ class Sender extends BaseDBModel {
 
     get instanceMethods() {
         return {};
+    }
+
+    get username() {
+        return this._rawModel.get('username');
     }
 }
 

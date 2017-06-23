@@ -15,6 +15,8 @@ const ContextCommand = require('./routing/commands/ContextCommand');
 const FirstMessageCommand = require('./routing/commands/FirstMessageCommand');
 
 const RandomInputController = require('./controllers/RandomInputController');
+const OnboardingController = require('./controllers/OnboardingController');
+const SearchController = require('./controllers/SearchController');
 
 const WebhookUpdate = require('../smooch/WebhookUpdate');
 const WebhookUpdateProcessor = require('./webhooks/WebhookUpdateProcessor');
@@ -36,6 +38,8 @@ class Bot {
 
         this._controllers = {
             randomInput: this._injectController(RandomInputController),
+            onboarding: this._injectController(OnboardingController),
+            search: this._injectController(SearchController),
         };
 
         Object.keys(this._controllers).forEach((k) => {
@@ -114,6 +118,15 @@ class Bot {
 
     _setupRoutes() {
         this._router
+        .when(
+          [
+            new FirstMessageCommand(),
+            new TextCommand('bla'),
+            new ContextCommand('ONBOARDING_WAIT_FOR_USERNAME', 'saveUsername'),
+            new ContextCommand('ONBOARDING_WAIT_FOR_LOCATION', 'saveLocation'),
+          ],
+          this._controllers.onboarding
+        )
         .otherwise(this._controllers.randomInput);
     }
 
