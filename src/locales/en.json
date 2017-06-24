@@ -1,5 +1,6 @@
 {
   "randomInput": "I don't understand",
+  "sendLocation": "Send Location",
   "onboarding": {
     "hey": "Hey! ✋🏻",
     "myNameIsFoxy": "My name is Foxy  🦊\n\nI'm a bot designed to help you with finding the best place to eat or have a coffee ☕️ 🍕",
@@ -7,6 +8,14 @@
     "sendMeYourLocation": "Gotcha, %s! 😉\n\nPlease send me your location so I can offer you the best places from Foursquare 📍"
   },
   "search": {
-    "whatAreYouLooking": "What are you looking for, %s?"
+    "whatAreYouLooking": "What are you looking for, %s?",
+    "categories": {
+      "breakfast": "Breakfast 🍳",
+      "lunch": "Lunch 🌭",
+      "dinner": "Dinner 🍽",
+      "coffeAndTee": "Coffee & Tea ☕️",
+      "nightlife": "Nightlife 🍹",
+      "thingsToDo": "Things to do 🍿"
+    }
   }
 }

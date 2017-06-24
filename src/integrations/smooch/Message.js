@@ -1,5 +1,5 @@
 class Message {
-    constructor(text, type, role, received, authorId, name, id, source, payload) {
+    constructor(text, type, role, received, authorId, name, id, source, payload, coordinates) {
         this._text = text;
         this._type = type;
         this._role = role;
@@ -9,6 +9,7 @@ class Message {
         this._id = id;
         this._source = source;
         this._payload = payload;
+        this._coordinates = coordinates;
     }
 
     get text() {
@@ -47,6 +48,10 @@ class Message {
         return this._payload;
     }
 
+    get coordinates() {
+        return this._coordinates;
+    }
+
     static deserialize(raw) {
         return new Message(
           raw.text,
@@ -57,7 +62,8 @@ class Message {
           raw.name,
           raw.id,
           raw.source,
-          raw.payload
+          raw.payload,
+          raw.coordinates
         );
     }
 }

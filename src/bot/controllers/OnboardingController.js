@@ -11,12 +11,17 @@ class OnboardingController extends BaseController {
     async saveUsername($) {
         await this._db.setSenderContext($.senderId, null);
         await this._db.saveUsername($.senderId, $.text);
-        await this.smooch.sendMessage($.appUserId, this.i18n('onboarding.sendMeYourLocation', [$.text]));
+        await this.smooch.sendLocationRequest(
+          $.appUserId,
+          this.i18n('onboarding.sendMeYourLocation', [$.text]),
+          this.i18n('sendLocation')
+        );
         return this._db.setSenderContext($.senderId, 'ONBOARDING_WAIT_FOR_LOCATION');
     }
 
     async saveLocation($) {
       await this._db.setSenderContext($.senderId, null);
+      await this._db.saveLocation($.senderId, $.coordinates);
       return this.controllers.search.handle($);
     }
 }

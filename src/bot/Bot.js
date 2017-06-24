@@ -18,7 +18,7 @@ const RandomInputController = require('./controllers/RandomInputController');
 const OnboardingController = require('./controllers/OnboardingController');
 const SearchController = require('./controllers/SearchController');
 
-const WebhookUpdate = require('../smooch/WebhookUpdate');
+const WebhookUpdate = require('../integrations/smooch/WebhookUpdate');
 const WebhookUpdateProcessor = require('./webhooks/WebhookUpdateProcessor');
 
 const smoochWebhookConfig = Config.Server.SmoochWebhook;
@@ -126,6 +126,12 @@ class Bot {
             new ContextCommand('ONBOARDING_WAIT_FOR_LOCATION', 'saveLocation'),
           ],
           this._controllers.onboarding
+        )
+        .when(
+          [
+            new QuickReplyPayloadPatternCommand('SEARCH_LOOKING_FOR_', 'renderPlaces')
+          ],
+          this._controllers.search
         )
         .otherwise(this._controllers.randomInput);
     }

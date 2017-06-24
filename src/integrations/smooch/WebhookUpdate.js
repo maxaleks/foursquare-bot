@@ -32,11 +32,11 @@ class WebhookUpdate {
 
     static deserialize(raw) {
         return new WebhookUpdate(
-          raw.trigger,
-          raw.app,
-          raw.messages ? raw.messages.map(m => Message.deserialize(m)) : null,
-          raw.appUser,
-          raw.postbacks ? raw.postbacks.map(p => MessagePostback.deserialize(p)) : null
+            raw.trigger,
+            raw.app,
+            raw.messages ? raw.messages.map(m => Message.deserialize(m)) : null,
+            raw.appUser,
+            raw.postbacks ? raw.postbacks.map(p => MessagePostback.deserialize(p)) : null
         );
     }
 }
