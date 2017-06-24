@@ -20,7 +20,6 @@ class WebhookUpdateProcessor {
 
                 const controller = item.controller;
                 const handler = item.handler;
-                console.log(controller);
                 return controller[handler](scope);
             });
         }

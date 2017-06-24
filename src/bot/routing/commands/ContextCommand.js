@@ -9,8 +9,6 @@ class ContextCommand extends BaseCommand {
     }
 
     test(scope) {
-      console.log(scope.context.state);
-      console.log(this._state);
         return (scope.context.state === this._state);
     }
 

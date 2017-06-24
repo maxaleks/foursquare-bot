@@ -1,6 +1,6 @@
 const BaseCommand = require('./BaseCommand');
 
-const convStart = 'conversation:start';
+const CONVERSATION_START = 'conversation:start';
 
 class FirstMessageCommand extends BaseCommand {
     constructor(handler) {
@@ -10,7 +10,7 @@ class FirstMessageCommand extends BaseCommand {
     }
 
     test(scope) {
-        return scope.trigger === convStart;
+        return scope.trigger === CONVERSATION_START;
     }
 
     get handlerName() {
