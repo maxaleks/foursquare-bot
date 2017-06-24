@@ -8,6 +8,14 @@
     "sendMeYourLocation": "Gotcha, %s! 😉\n\nPlease send me your location so I can offer you the best places from Foursquare 📍"
   },
   "search": {
-    "whatAreYouLooking": "What are you looking for, %s?"
+    "whatAreYouLooking": "What are you looking for, %s?",
+    "categories": {
+      "breakfast": "Breakfast 🍳",
+      "lunch": "Lunch 🌭",
+      "dinner": "Dinner 🍽",
+      "coffeAndTee": "Coffee & Tea ☕️",
+      "nightlife": "Nightlife 🍹",
+      "thingsToDo": "Things to do 🍿"
+    }
   }
 }

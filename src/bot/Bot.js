@@ -129,7 +129,7 @@ class Bot {
         )
         .when(
           [
-            new QuickReplyPayloadPatternCommand('SEARCH_LOOKING_FOR_', 'commonHandle')
+            new QuickReplyPayloadPatternCommand('SEARCH_LOOKING_FOR_', 'renderPlaces')
           ],
           this._controllers.search
         )
