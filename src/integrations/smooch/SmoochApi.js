@@ -24,7 +24,7 @@ class SmoochApi {
                         if (buttons) { params.actions = buttons.map(button => button.serialize()); }
 
                         resolve(this._client.appUsers.sendMessage(userId, params));
-                    }, 2000);
+                    }, 0);
                 });
             });
     }

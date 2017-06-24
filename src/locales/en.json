@@ -1,3 +1,12 @@
 {
-  "hello": "Hello"
+  "randomInput": "I don't understand",
+  "onboarding": {
+    "hey": "Hey! ✋🏻",
+    "myNameIsFoxy": "My name is Foxy  🦊\n\nI'm a bot designed to help you with finding the best place to eat or have a coffee ☕️ 🍕",
+    "howCanICallYou": "How can I call you?",
+    "sendMeYourLocation": "Gotcha, %s! 😉\n\nPlease send me your location so I can offer you the best places from Foursquare 📍"
+  },
+  "search": {
+    "whatAreYouLooking": "What are you looking for, %s?"
+  }
 }

@@ -1,14 +1,16 @@
 const BaseCommand = require('./BaseCommand');
 
-class TextCommand extends BaseCommand {
+const CONVERSATION_START = 'conversation:start';
+
+class FirstMessageCommand extends BaseCommand {
     constructor(handler) {
         super();
 
-        this._handler = handler;
+        this._handler = handler || 'handle';
     }
 
     test(scope) {
-        return !scope.sender.seenOnboarding;
+        return scope.trigger === CONVERSATION_START;
     }
 
     get handlerName() {
@@ -16,4 +18,4 @@ class TextCommand extends BaseCommand {
     }
 }
 
-module.exports = TextCommand;
+module.exports = FirstMessageCommand;

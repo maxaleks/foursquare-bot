@@ -125,6 +125,13 @@ class BotDatabase {
             { where: { id: senderId, }, }
         );
     }
+
+    saveUsername(id, username) {
+        return this._models.Sender.update(
+            { username },
+            { where: { id } }
+        )
+    }
 }
 
 module.exports = BotDatabase;

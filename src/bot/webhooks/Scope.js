@@ -55,6 +55,10 @@ class Scope {
     get appUserId() {
         return this._update.appUser._id;
     }
+
+    get trigger() {
+        return this._update.trigger;
+    }
 }
 
 
