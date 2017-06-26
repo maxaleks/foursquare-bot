@@ -135,7 +135,7 @@ class BotDatabase {
 
     saveLocation(id, coordinates) {
         return this._models.Sender.update(
-            { coordinates: JSON.stringify(coordinates) },
+            { coordinates },
             { where: { id } }
         )
     }

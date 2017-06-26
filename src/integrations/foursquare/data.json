@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+        "id": "4bf58dd8d48988d143941735",
+        "name": "Breakfast"
+    },
+    {
+        "id": "4bf58dd8d48988d147941735",
+        "name": "Diner"
+    },
+    {
+        "id": "4bf58dd8d48988d1e0931735",
+        "name": "Coffee Shop"
+    },
+    {
+        "id": "4bf58dd8d48988d16e941735",
+        "name": "Fast Food"
+    },
+    {
+        "id": "4bf58dd8d48988d1c4941735",
+        "name": "Restaurant"
+    },
+    {
+        "id": "4bf58dd8d48988d116941735",
+        "name": "Bar"
+    }
+  ]
+}
