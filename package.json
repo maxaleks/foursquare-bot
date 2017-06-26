@@ -15,6 +15,7 @@
   "license": "ISC",
   "homepage": "https://mabramchuk@git.workfusion.com/scm/~mabramchuk/workfusion-bot.git",
   "dependencies": {
+    "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",

@@ -1,4 +1,5 @@
 const BaseController = require('./BaseController');
+const FourSquareApi = require('../../integrations/foursquare');
 
 class SearchController extends BaseController {
     handle($) {
@@ -7,17 +8,40 @@ class SearchController extends BaseController {
             this.i18n('search.whatAreYouLooking', [$.sender.username]),
             [
                 this.base.reply.postback(this.i18n('search.categories.breakfast'), 'SEARCH_LOOKING_FOR_BREAKFAST'),
-                this.base.reply.postback(this.i18n('search.categories.lunch'), 'SEARCH_LOOKING_FOR_LUNCH'),
-                this.base.reply.postback(this.i18n('search.categories.dinner'), 'SEARCH_LOOKING_FOR_DINNER'),
-                this.base.reply.postback(this.i18n('search.categories.coffeeAndTee'), 'SEARCH_LOOKING_FOR_COFFEE_AND_TEA'),
-                this.base.reply.postback(this.i18n('search.categories.nightlife'), 'SEARCH_LOOKING_FOR_NIGHTLIFE'),
-                this.base.reply.postback(this.i18n('search.categories.thingsToDo'), 'SEARCH_LOOKING_FOR_THINGS_TO_DO'),
+                this.base.reply.postback(this.i18n('search.categories.diner'), 'SEARCH_LOOKING_FOR_DINER'),
+                this.base.reply.postback(this.i18n('search.categories.coffee'), 'SEARCH_LOOKING_FOR_COFFEE'),
+                this.base.reply.postback(this.i18n('search.categories.fastfood'), 'SEARCH_LOOKING_FOR_FASTFOOD'),
+                this.base.reply.postback(this.i18n('search.categories.restaurant'), 'SEARCH_LOOKING_FOR_RESTAURANT'),
+                this.base.reply.postback(this.i18n('search.categories.bar'), 'SEARCH_LOOKING_FOR_BAR'),
             ]
         );
     }
 
-    renderPlaces($) {
-        const category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
+    async renderPlaces($) {
+        let category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
+        switch (category) {
+          case 'BREAKFAST':
+            category = 'breakfast';
+            break;
+          case 'DINER':
+            category = 'diner';
+            break;
+          case 'COFFEE':
+            category = 'coffee shop';
+            break;
+          case 'FASTFOOD':
+            category = 'fast food';
+            break;
+          case 'RESTAURANT':
+            category = 'restaurant';
+            break;
+          case 'BAR':
+            category = 'bar';
+            break;
+          default:
+            category = 'breakfast';
+        }
+        const places = await FourSquareApi.getNearest($.sender.coordinates, category);
     }
 }
 
