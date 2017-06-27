@@ -139,6 +139,19 @@ class BotDatabase {
             { where: { id } }
         )
     }
+
+    updateCategories(categories) {
+        const model = this._models.Category;
+        return Promise.all(categories.map(async (item) => {
+            const obj = await model.findOne({ where: { name: item.name } });
+            return obj ? obj.update(item) : model.create(item)
+        }));
+    }
+
+    getCategories() {
+        const model = this._models.Category;
+        return model.findAll({});
+    }
 }
 
 module.exports = BotDatabase;

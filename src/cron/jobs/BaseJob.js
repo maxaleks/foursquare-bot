@@ -12,7 +12,7 @@ class BaseJob {
     }
 
     start() {
-        this.task.start();
+        this._task.start();
     }
 }
 
