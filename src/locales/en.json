@@ -15,7 +15,10 @@
       "coffee": "Coffee ☕️",
       "fastfood": "Fast Food 🍔",
       "restaurant": "Restaurant 🍽",
-      "bar": "Bar 🥃"
-    }
+      "bar": "Bar 🍹"
+    },
+    "sweet": "Sweet. Here are some of the top rated spots nearby 🕶",
+    "moreInfo": "More info 👈",
+    "somethingElse": "Something else?"
   }
 }

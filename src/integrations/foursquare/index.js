@@ -29,8 +29,8 @@ function get(url, params) {
 async function getNearest(coords, categoryId) {
     const { lat, long } = coords;
     const ll = [lat, long].join(',');
-    const response = await get('/venues/search', { ll, categoryId, limit: 6, radius: 3000 });
-    return response.data.response.venues;
+    const response = await get('/venues/explore', { ll, categoryId, limit: 6, radius: 1000, venuePhotos: 1 });
+    return response.data.response.groups[0].items;
 }
 
 function filterCategories(tree) {

@@ -7,7 +7,7 @@ class Carousel {
         return {
             role: 'appMaker',
             type: 'carousel',
-            items: this._elements.map(element => element),
+            items: this._elements.map(element => element.serialize()),
         };
     }
 }
