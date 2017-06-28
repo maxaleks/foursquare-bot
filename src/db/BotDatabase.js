@@ -143,14 +143,15 @@ class BotDatabase {
     updateCategories(categories) {
         const model = this._models.Category;
         return Promise.all(categories.map(async (item) => {
-            const obj = await model.findOne({ where: { name: item.name } });
-            return obj ? obj.update(item) : model.create(item)
+            const { name, externalId } = item;
+            const [obj, created] = await model.findOrCreate({ where: { name }, defaults: { externalId } });
+            if (!created) obj = await obj.update(item);
+            return obj;
         }));
     }
 
-    getCategories() {
-        const model = this._models.Category;
-        return model.findAll({});
+    findCategory(name) {
+        return this._models.Category.findOne({ where: { name } });
     }
 }
 

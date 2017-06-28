@@ -1,7 +1,5 @@
 const BaseController = require('./BaseController');
-const FourSquareApi = require('../../integrations/foursquare');
-const Carousel = require('../../integrations/smooch/elements/Carousel');
-const CarouselElement = require('../../integrations/smooch/elements/CarouselElement');
+const PlacesCarousel = require('../helpers/PlacesCarousel');
 
 class SearchController extends BaseController {
     handle($) {
@@ -25,48 +23,26 @@ class SearchController extends BaseController {
 
     async renderPlaces($) {
         let category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
-        switch (category) {
-          case 'BREAKFAST':
-            category = 'breakfast';
-            break;
-          case 'DINER':
-            category = 'diner';
-            break;
-          case 'COFFEE':
-            category = 'coffee shop';
-            break;
-          case 'FASTFOOD':
-            category = 'fast food';
-            break;
-          case 'RESTAURANT':
-            category = 'restaurant';
-            break;
-          case 'BAR':
-            category = 'bar';
-            break;
-          default:
-            category = 'breakfast';
-        }
-        const categories = await this.db.getCategories();
-        const categoryId = categories.find(item => item.name === category).externalId;
-        const places = await FourSquareApi.getNearest($.sender.coordinates, categoryId);
+        const CATEGORY = {
+          BREAKFAST: 'breakfast',
+          DINER: 'diner',
+          COFFEE: 'coffee shop',
+          FASTFOOD: 'fast food',
+          RESTAURANT: 'restaurant',
+          BAR: 'bar',
+        };
+        const categoryId = (await this.db.findCategory(CATEGORY[category])).externalId;
+        const places = await this.foursquare.getNearest($.sender.coordinates, categoryId);
 
-        await this.smooch.sendMessage($.appUserId, this.i18n('search.sweet'));
-        const carouselElements = places.map((item, index) => {
-            const venue = item.venue;
-            const image = venue.featuredPhotos.items[0];
-            const imageUrl = `${image.prefix}600x600${image.suffix}`;
-            return new CarouselElement(
-                `${venue.name} 🏃 ${(venue.location.distance / 1000).toFixed(1)}km`,
-                venue.location.address ? `📌 ${venue.location.address}` : '',
-                imageUrl,
-                [this.base.button.postback(this.i18n('search.moreInfo'), `SEARCH_MORE_INFO_${index}`)]
+        if (places.length) {
+            await this.smooch.sendMessage($.appUserId, this.i18n('search.sweet'));
+            await this.smooch.sendCarousel(
+                $.appUserId,
+                new PlacesCarousel(places, this.i18n)
             );
-        });
-        await this.smooch.sendCarousel(
-            $.appUserId,
-            new Carousel(carouselElements)
-        );
+        } else {
+          await this.smooch.sendMessage($.appUserId, this.i18n('search.sorry'));
+        }
         return this.sendCategories($, this.i18n('search.somethingElse'));
     }
 }

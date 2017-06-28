@@ -3,11 +3,12 @@ const Button = require('../../integrations/smooch/elements/Button');
 const Reply = require('../../integrations/smooch/elements/Reply');
 
 class BaseController {
-    constructor(logger, smooch, db, i18n) {
+    constructor(logger, smooch, db, i18n, foursquare) {
         this._logger = logger;
         this._smooch = smooch;
         this._db = db;
         this._i18n = i18n;
+        this._foursquare = foursquare;
 
         this._staticMessageDispatcher = new StaticMessageDispatcher(smooch);
     }
@@ -26,6 +27,10 @@ class BaseController {
 
     get i18n() {
         return this._i18n;
+    }
+
+    get foursquare() {
+        return this._foursquare;
     }
 
     _randomi18n(string, param) {
