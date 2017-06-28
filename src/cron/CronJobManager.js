@@ -1,3 +1,5 @@
+const UpdateCategoriesJob = require('./jobs/UpdateCategoriesJob');
+
 class CronJobManager {
     constructor(db, smooch, controllers) {
         this._db = db;
@@ -5,6 +7,7 @@ class CronJobManager {
         this._controllers = controllers;
 
         this._jobs = [
+            new UpdateCategoriesJob(db, smooch, controllers),
         ];
     }
 

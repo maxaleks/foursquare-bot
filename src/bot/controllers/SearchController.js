@@ -41,7 +41,9 @@ class SearchController extends BaseController {
           default:
             category = 'breakfast';
         }
-        const places = await FourSquareApi.getNearest($.sender.coordinates, category);
+        const categories = await this.db.getCategories();
+        const categoryId = categories.find(item => item.name === category).externalId;
+        const places = await FourSquareApi.getNearest($.sender.coordinates, categoryId);
     }
 }
 

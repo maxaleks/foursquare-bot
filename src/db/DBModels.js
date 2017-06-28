@@ -1,11 +1,13 @@
 const Sender = require('./models/Sender');
 const Webhook = require('./models/Webhook');
+const Category = require('./models/Category');
 
 class DBModels {
     constructor(sequelize) {
         const models = [
             new Sender(),
-            new Webhook()
+            new Webhook(),
+            new Category(),
         ];
 
         this._models = {};
@@ -37,6 +39,10 @@ class DBModels {
 
     get Webhook() {
         return this._models.Webhook;
+    }
+
+    get Category() {
+        return this._models.Category;
     }
 }
 
