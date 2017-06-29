@@ -135,9 +135,22 @@ class BotDatabase {
 
     saveLocation(id, coordinates) {
         return this._models.Sender.update(
-            { coordinates: JSON.stringify(coordinates) },
+            { coordinates },
             { where: { id } }
         )
+    }
+
+    updateCategories(categories) {
+        return Promise.all(categories.map(async (item) => {
+            const { name, externalId } = item;
+            const [obj, created] = await this._models.Category.findOrCreate({ where: { name }, defaults: { externalId } });
+            if (!created) obj = await obj.update(item);
+            return obj;
+        }));
+    }
+
+    findCategory(name) {
+        return this._models.Category.findOne({ where: { name } });
     }
 }
 

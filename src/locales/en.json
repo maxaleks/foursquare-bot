@@ -11,11 +11,15 @@
     "whatAreYouLooking": "What are you looking for, %s?",
     "categories": {
       "breakfast": "Breakfast 🍳",
-      "lunch": "Lunch 🌭",
-      "dinner": "Dinner 🍽",
-      "coffeAndTee": "Coffee & Tea ☕️",
-      "nightlife": "Nightlife 🍹",
-      "thingsToDo": "Things to do 🍿"
-    }
+      "diner": "Diner 🍛",
+      "coffee": "Coffee ☕️",
+      "fastfood": "Fast Food 🍔",
+      "restaurant": "Restaurant 🍽",
+      "bar": "Bar 🍹"
+    },
+    "sweet": "Sweet. Here are some of the top rated spots nearby 🕶",
+    "moreInfo": "More info 👈",
+    "somethingElse": "Something else?",
+    "sorry": "Sorry, no places near you..."
   }
 }

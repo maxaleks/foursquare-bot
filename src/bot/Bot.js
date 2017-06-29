@@ -5,6 +5,7 @@ const Config = require('../config');
 
 const Router = require('./routing/Router');
 const CronJobManager = require('../cron/CronJobManager');
+const FourSquareApi = require('../integrations/foursquare/FourSquareApi');
 
 const TextCommand = require('./routing/commands/TextCommand');
 const PostbackCommand = require('./routing/commands/PostbackCommand');
@@ -29,6 +30,7 @@ class Bot {
         this._db = db;
         this._smooch = smooch;
         this._router = new Router();
+        this._foursquare = new FourSquareApi();
 
         this._setupi18n();
 
@@ -112,7 +114,8 @@ class Bot {
         new CronJobManager(
             this._db,
             this._smooch,
-            this._controllers
+            this._controllers,
+            this._foursquare
         ).startAllTheJobs();
     }
 
@@ -141,7 +144,8 @@ class Bot {
             this._logger,
             this._smooch,
             this._db,
-            this._i18n
+            this._i18n,
+            this._foursquare
         );
 
         return controllerObject;
