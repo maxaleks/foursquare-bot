@@ -24,12 +24,12 @@ class SearchController extends BaseController {
     async renderPlaces($) {
         let category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
         const CATEGORIES = {
-          BREAKFAST: 'breakfast',
-          DINER: 'diner',
-          COFFEE: 'coffee shop',
-          FASTFOOD: 'fast food',
-          RESTAURANT: 'restaurant',
-          BAR: 'bar',
+            BREAKFAST: 'breakfast',
+            DINER: 'diner',
+            COFFEE: 'coffee shop',
+            FASTFOOD: 'fast food',
+            RESTAURANT: 'restaurant',
+            BAR: 'bar',
         };
         const categoryId = (await this.db.findCategory(CATEGORIES[category])).externalId;
         const places = await this.foursquare.getNearest($.sender.coordinates, categoryId);

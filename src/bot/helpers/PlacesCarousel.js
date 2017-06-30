@@ -8,7 +8,7 @@ class PlacesCarousel {
         this._i18n = i18n;
     }
     serialize() {
-        const carouselElements = this._places.map((item, index) => {
+        const carouselElements = this._places.map((item) => {
             const venue = item.venue;
             let imageUrl = null;
             let image = null;
@@ -23,7 +23,7 @@ class PlacesCarousel {
                 `${venue.name} 🏃 ${(venue.location.distance / 1000).toFixed(1)}km`,
                 venue.location.address ? `📌 ${venue.location.address}` : '',
                 imageUrl,
-                [Button.postback(this._i18n('search.moreInfo'), `SEARCH_MORE_INFO_${index}`)]
+                [Button.postback(this._i18n('search.moreInfo'), `DETAILS_MORE_INFO_${venue.id}`)]
             );
         });
 

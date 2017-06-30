@@ -1,25 +1,35 @@
 {
-  "randomInput": "I don't understand",
-  "sendLocation": "Send Location",
-  "onboarding": {
-    "hey": "Hey! ✋🏻",
-    "myNameIsFoxy": "My name is Foxy  🦊\n\nI'm a bot designed to help you with finding the best place to eat or have a coffee ☕️ 🍕",
-    "howCanICallYou": "How can I call you?",
-    "sendMeYourLocation": "Gotcha, %s! 😉\n\nPlease send me your location so I can offer you the best places from Foursquare 📍"
-  },
-  "search": {
-    "whatAreYouLooking": "What are you looking for, %s?",
-    "categories": {
-      "breakfast": "Breakfast 🍳",
-      "diner": "Diner 🍛",
-      "coffee": "Coffee ☕️",
-      "fastfood": "Fast Food 🍔",
-      "restaurant": "Restaurant 🍽",
-      "bar": "Bar 🍹"
+    "randomInput": "I don't understand",
+    "sendLocation": "Send Location",
+    "onboarding": {
+        "hey": "Hey! ✋🏻",
+        "myNameIsFoxy": "My name is Foxy  🦊\n\nI'm a bot designed to help you with finding the best place to eat or have a coffee ☕️ 🍕",
+        "howCanICallYou": "How can I call you?",
+        "sendMeYourLocation": "Gotcha, %s! 😉\n\nPlease send me your location so I can offer you the best places from Foursquare 📍"
     },
-    "sweet": "Sweet. Here are some of the top rated spots nearby 🕶",
-    "moreInfo": "More info 👈",
-    "somethingElse": "Something else?",
-    "sorry": "Sorry, no places near you..."
-  }
+    "search": {
+        "whatAreYouLooking": "What are you looking for, %s?",
+        "categories": {
+            "breakfast": "Breakfast 🍳",
+            "diner": "Diner 🍛",
+            "coffee": "Coffee ☕️",
+            "fastfood": "Fast Food 🍔",
+            "restaurant": "Restaurant 🍽",
+            "bar": "Bar 🍹"
+        },
+        "sweet": "Sweet. Here are some of the top rated spots nearby 🕶",
+        "moreInfo": "More info 👈",
+        "somethingElse": "Something else?",
+        "sorry": "Sorry, no places near you..."
+    },
+    "details": {
+        "hereIsMoreInfo": "Here is more info about %s..",
+        "open": "🕑 Mostly open now\n",
+        "closed": "🕑 Closed now\n",
+        "rating": "📈 Rating - %s\n",
+        "backToResults": "Back to results 👈",
+        "website": "Website 🖥",
+        "call": "Call 📞",
+        "facebookPage": "Facebook page 📱"
+    }
 }

@@ -52,6 +52,10 @@ class FourSquareApi {
         const categories = (await this.get('/venues/categories')).data.response.categories;
         return this.filterCategories(categories).map(item => ({ externalId: item.id, name: item.shortName.toLowerCase() }));
     }
+
+    async getPlace(id) {
+        return (await this.get(`/venues/${id}`)).data.response.venue;
+    }
 }
 
 module.exports = FourSquareApi;
