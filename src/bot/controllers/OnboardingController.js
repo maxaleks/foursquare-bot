@@ -20,9 +20,9 @@ class OnboardingController extends BaseController {
     }
 
     async saveLocation($) {
-      await this._db.setSenderContext($.senderId, null);
-      await this._db.saveLocation($.senderId, $.coordinates);
-      return this.controllers.search.handle($);
+        await this._db.setSenderContext($.senderId, null);
+        await this._db.saveLocation($.senderId, $.coordinates);
+        return this.controllers.search.handle($);
     }
 }
 

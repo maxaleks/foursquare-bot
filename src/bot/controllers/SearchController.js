@@ -22,7 +22,7 @@ class SearchController extends BaseController {
     }
 
     async renderPlaces($) {
-        let category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
+        const category = $.quickReplyPayload.replace('SEARCH_LOOKING_FOR_', '');
         const CATEGORIES = {
             BREAKFAST: 'breakfast',
             DINER: 'diner',
@@ -41,7 +41,7 @@ class SearchController extends BaseController {
                 new PlacesCarousel(places, this.i18n)
             );
         } else {
-          await this.smooch.sendMessage($.appUserId, this.i18n('search.sorry'));
+            await this.smooch.sendMessage($.appUserId, this.i18n('search.sorry'));
         }
         return this.sendCategories($, this.i18n('search.somethingElse'));
     }
