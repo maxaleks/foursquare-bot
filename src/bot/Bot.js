@@ -18,6 +18,7 @@ const FirstMessageCommand = require('./routing/commands/FirstMessageCommand');
 const RandomInputController = require('./controllers/RandomInputController');
 const OnboardingController = require('./controllers/OnboardingController');
 const SearchController = require('./controllers/SearchController');
+const DetailsController = require('./controllers/DetailsController');
 
 const WebhookUpdate = require('../integrations/smooch/WebhookUpdate');
 const WebhookUpdateProcessor = require('./webhooks/WebhookUpdateProcessor');
@@ -42,6 +43,7 @@ class Bot {
             randomInput: this._injectController(RandomInputController),
             onboarding: this._injectController(OnboardingController),
             search: this._injectController(SearchController),
+            details: this._injectController(DetailsController),
         };
 
         Object.keys(this._controllers).forEach((k) => {
@@ -122,19 +124,25 @@ class Bot {
     _setupRoutes() {
         this._router
         .when(
-          [
-            new FirstMessageCommand(),
-            new TextCommand('bla'),
-            new ContextCommand('ONBOARDING_WAIT_FOR_USERNAME', 'saveUsername'),
-            new ContextCommand('ONBOARDING_WAIT_FOR_LOCATION', 'saveLocation'),
-          ],
-          this._controllers.onboarding
+            [
+                new FirstMessageCommand(),
+                new TextCommand('bla'),
+                new ContextCommand('ONBOARDING_WAIT_FOR_USERNAME', 'saveUsername'),
+                new ContextCommand('ONBOARDING_WAIT_FOR_LOCATION', 'saveLocation'),
+            ],
+            this._controllers.onboarding
         )
         .when(
-          [
-            new QuickReplyPayloadPatternCommand('SEARCH_LOOKING_FOR_', 'renderPlaces')
-          ],
-          this._controllers.search
+            [
+                new QuickReplyPayloadPatternCommand('SEARCH_LOOKING_FOR_', 'renderPlaces'),
+            ],
+            this._controllers.search
+        )
+        .when(
+            [
+                new PostbackPatternCommand('DETAILS_MORE_INFO_'),
+            ],
+            this._controllers.details
         )
         .otherwise(this._controllers.randomInput);
     }
