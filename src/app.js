@@ -43,7 +43,7 @@ class App {
         this._app = express();
 
         this._app.use(bodyParser.json());
-        this._app.use(morgan('combined', { stream: logger.stream, }));
+        this._app.use(morgan('combined', { stream: logger.stream }));
         this._app.use(cors());
 
         this._app.use('/js', express.static(path.join(__dirname, '../client')));
@@ -51,9 +51,9 @@ class App {
         this._app.listen(Config.Server.Port);
 
         if (environment === 'production') {
-            this._app.use(rollbar.errorHandler(Config.rollbar.token, { environment, }));
+            this._app.use(rollbar.errorHandler(Config.rollbar.token, { environment }));
 
-            rollbar.handleUncaughtExceptionsAndRejections(Config.rollbar.token, { environment, });
+            rollbar.handleUncaughtExceptionsAndRejections(Config.rollbar.token, { environment });
         }
 
         this._app.smooch = this._smooch;

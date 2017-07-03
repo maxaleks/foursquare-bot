@@ -42,7 +42,7 @@ class SmoochApi {
                             {
                                 type: 'locationRequest',
                                 text: locationText,
-                            }
+                            },
                         ],
                     };
 
@@ -110,7 +110,7 @@ class SmoochApi {
     }
 
     _initializeClient() {
-        return new smoochCore({ keyId, secret, scope: 'app', });
+        return new smoochCore({ keyId, secret, scope: 'app' });
     }
 }
 
