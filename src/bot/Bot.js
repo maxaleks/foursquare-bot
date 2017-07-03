@@ -9,8 +9,8 @@ const FourSquareApi = require('../integrations/foursquare/FourSquareApi');
 
 const TextCommand = require('./routing/commands/TextCommand');
 const PostbackCommand = require('./routing/commands/PostbackCommand');
+const QuickReplyCommand = require('./routing/commands/QuickReplyCommand');
 const PostbackPatternCommand = require('./routing/commands/PostbackPatternCommand');
-const ContextPatternCommand = require('./routing/commands/ContextPatternCommand');
 const QuickReplyPayloadPatternCommand = require('./routing/commands/QuickReplyPayloadPatternCommand');
 const ContextCommand = require('./routing/commands/ContextCommand');
 const FirstMessageCommand = require('./routing/commands/FirstMessageCommand');
@@ -141,6 +141,9 @@ class Bot {
         .when(
             [
                 new PostbackPatternCommand('DETAILS_MORE_INFO_'),
+                new PostbackPatternCommand('DETAILS_CALL_', 'handleCall'),
+                new PostbackCommand('DETAILS_BACK_TO_CATEGORIES', 'backToCategories'),
+                new QuickReplyCommand('DETAILS_BACK_TO_CATEGORIES', 'backToCategories'),
             ],
             this._controllers.details
         )
