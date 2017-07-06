@@ -6,9 +6,10 @@ machine:
 
 database:
   override:
-    - mv config/config.ci.json config/config.json
-    - mv src/config.json.example src/config.json
-    - psql -U postgres -h localhost -c 'CREATE DATABASE test'
+    - cp ./src/config.json.example ./src/config.json
+    - cp ./config/config.js ./config/config.js.example
+    - psql -U postgres -h localhost -c 'CREATE DATABASE foursquare_bot_development'
+    - ./node_modules/.bin/sequelize db:migrate
 
 test:
   override:
