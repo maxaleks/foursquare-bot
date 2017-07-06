@@ -1,0 +1,16 @@
+machine:
+  node:
+    version: 7.3.0
+  services:
+    - postgresql
+
+database:
+  override:
+    - mv config/config.ci.json config/config.json
+    - mv src/config.json.example src/config.json
+    - psql -U postgres -h localhost -c 'CREATE DATABASE test'
+
+test:
+  override:
+    - npm run lint
+    - npm test
