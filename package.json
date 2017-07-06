@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js",
-    "lint": "./node_modules/.bin/eslint ./",
-    "test": ""
+    "lint": "./node_modules/.bin/eslint ./"
   },
   "repository": {
     "type": "git",

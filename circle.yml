@@ -8,10 +8,7 @@ database:
   override:
     - cp ./src/config.json.example ./src/config.json
     - cp ./config/config.js ./config/config.js.example
-    - psql -U postgres -h localhost -c 'CREATE DATABASE foursquare_bot_development'
-    - ./node_modules/.bin/sequelize db:migrate
 
 test:
   override:
     - npm run lint
-    - npm test
