@@ -39,43 +39,43 @@ class BotDatabase {
             account,
             timePeriod,
             reason,
-            stamp
+            stamp,
         });
     }
 
     getSenderByExternalId(externalId) {
         return this._models.Sender.findOne({
-            where: { externalId, },
+            where: { externalId },
         });
     }
 
     saveSearchParam(senderId, key, value) {
         return this._models.MainSearchParam.findOrCreate(
             {
-                where: { senderId, key, },
-                defaults: { senderId, key, value: value.toString(), },
+                where: { senderId, key },
+                defaults: { senderId, key, value: value.toString() },
             }
         )
         .then((params) => {
-            return params[0].update({ key, value: value.toString(), });
+            return params[0].update({ key, value: value.toString() });
         });
     }
 
     findSearchParam(senderId, key) {
         return this._models.MainSearchParam.findOne({
-            where: { senderId, key, },
+            where: { senderId, key },
         });
     }
 
     clearSearchParam(senderId, key) {
         return this._models.MainSearchParam.destroy({
-            where: { senderId, key, },
+            where: { senderId, key },
         });
     }
 
     clearAllSearchParams(senderId) {
         return this._models.MainSearchParam.destroy({
-            where: { senderId, },
+            where: { senderId },
         });
     }
 
@@ -95,14 +95,14 @@ class BotDatabase {
                 chatState: (new SenderContext(context)).serialize(),
             },
             {
-                where: { id: senderId, },
+                where: { id: senderId },
             }
         );
     }
 
     findSenderSearchParams(senderId) {
         return this._models.MainSearchParam.findAll({
-            where: { senderId, },
+            where: { senderId },
         });
     }
 
@@ -111,8 +111,8 @@ class BotDatabase {
 
         results.forEach((item) => {
             return promises.push(this._models.PreloadedSearchResultItem.findOrCreate({
-                where: { externalId: item.id, senderId, },
-                defaults: { data: item, externalId: item.id, senderId, },
+                where: { externalId: item.id, senderId },
+                defaults: { data: item, externalId: item.id, senderId },
             }));
         });
 
@@ -121,8 +121,8 @@ class BotDatabase {
 
     changeSenderOnboarding(senderId) {
         return this._models.Sender.update(
-            { seenOnboarding: true, },
-            { where: { id: senderId, }, }
+            { seenOnboarding: true },
+            { where: { id: senderId } }
         );
     }
 
@@ -130,22 +130,23 @@ class BotDatabase {
         return this._models.Sender.update(
             { username },
             { where: { id } }
-        )
+        );
     }
 
     saveLocation(id, coordinates) {
         return this._models.Sender.update(
             { coordinates },
             { where: { id } }
-        )
+        );
     }
 
     updateCategories(categories) {
         return Promise.all(categories.map(async (item) => {
             const { name, externalId } = item;
             const [obj, created] = await this._models.Category.findOrCreate({ where: { name }, defaults: { externalId } });
-            if (!created) obj = await obj.update(item);
-            return obj;
+            let category = obj;
+            if (!created) category = await obj.update(item);
+            return category;
         }));
     }
 

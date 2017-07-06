@@ -368,7 +368,7 @@ exports.config = {
          * @env NEW_RELIC_IGNORING_RULES
          */
         ignore: [
-            '^\/socket\.io\/.*\/xhr-polling/'
+            '^\/socket\.io\/.*\/xhr-polling/',
         ],
     },
     /**
@@ -588,7 +588,7 @@ exports.config = {
      *  Enables reporting of database/schema names. Default is `true`.
      */
     datastore_tracer: {
-        instance_reporting: { enabled: true, },
-        database_name_reporting: { enabled: true, },
+        instance_reporting: { enabled: true },
+        database_name_reporting: { enabled: true },
     },
 };

@@ -39,7 +39,7 @@ class Router {
         });
 
         if (controllers.length === 0 && this._otherwiseController !== null) {
-            controllers.push({ controller: this._otherwiseController, handler: 'handle', });
+            controllers.push({ controller: this._otherwiseController, handler: 'handle' });
         }
 
         return controllers;

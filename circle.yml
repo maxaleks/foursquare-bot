@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 7.3.0
+  services:
+    - postgresql
+
+database:
+  override:
+    - cp ./src/config.json.example ./src/config.json
+    - cp ./config/config.js ./config/config.js.example
+
+test:
+  override:
+    - npm run lint

@@ -19,7 +19,7 @@ const logger = new winston.Logger({
             handleExceptions: true,
             json: false,
             colorize: true,
-        })
+        }),
     ],
     exitOnError: false,
 });

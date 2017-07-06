@@ -13,7 +13,7 @@ class BaseDBModel {
             this.fields,
             Object.assign(this.config, {
                 instanceMethods: this.instanceMethods || {},
-            })
+            }),
         ];
     }
 
